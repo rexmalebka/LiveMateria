@@ -1,0 +1,15 @@
+{application, liveMateria,
+ [{description, "An OTP application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {liveMateria_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["GPL 3.0"]},
+  {links, []}
+ ]}.
