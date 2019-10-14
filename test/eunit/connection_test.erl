@@ -37,10 +37,15 @@ config_test()->
 
 	ok.
 
-connect_all_test() ->
-	?assertEqual(conn:init(),{ok,ets_intialized}),
-	?assertEqual(conn:name(hola), {ok,{hostname, "hola@127.0.0.1"}}),
-	?assertEqual(conn:config(), {ok, {config, allow}}),
-	?assertEqual(conn:connect(),{ok, connected}),
-	ok.
+%server_test() ->
+%	server:init().
+
+%connect_all_test() ->
+%	?assertEqual(conn:init(),{ok,ets_intialized}),
+%	?assertEqual(conn:name(hola), {ok,{hostname, "hola@127.0.0.1"}}),
+%	?assertEqual(conn:config(), {ok, {config, allow}}),
+%	?assertEqual(conn:connect(),{ok, connected}),
+%	ok.
+
+	
 

@@ -73,5 +73,3 @@ config({from, FromList}) when is_list(FromList) ->
 			config()
 	end.
 
-connect() ->
-	{ok, connected}.
