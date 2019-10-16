@@ -20,4 +20,9 @@ custom_sequence_test() ->
         ?assertEqual(lists:member(custom, ?reg()),true),            
         ?assertEqual(seq:sequence(custom), {error, sequence_already_exists}),              ok.
 
-
+seq_parse_test() ->
+        ?assertEqual(seq:seq_parse([cp,cp]),[1/2, 1/2]), 
+        ?assertEqual(seq:seq_parse([cp,cp,cp]),[1/3, 1/3, 1/3]),
+        ?assertEqual(seq:seq_parse([cp,[cp,cp]]), [1/2, 1/4, 1/4]),
+        ?assertEqual(seq:seq_parse([hh, [hh, [cp, [hh,hh]]]]), [0.5,0.25,0.125,0.0625,0.0625]),
+        ok.

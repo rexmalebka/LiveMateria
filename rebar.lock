@@ -1,1 +1,4 @@
-[].
+[{<<"rebar">>,
+  {git,"https://github.com/soundkitchen/osc-erlang.git",
+       {ref,"fdb210e02d1edeae4d0e328b983c44c1d634cbfe"}},
+  0}].
