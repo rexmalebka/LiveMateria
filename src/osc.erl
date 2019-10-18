@@ -113,3 +113,16 @@ get_string(X) when is_binary(X) ->
 
 skip(0, B) -> B;
 skip(N, B) -> element(2, erlang:split_binary(B, N)).
+
+
+%play(N) -> run_code(["/playNote", N]).
+
+play2(M) when is_atom(M)->
+       %% b.sendMsg(\play2, *[\cps,0.5625,\cycle,0,\delta,1.777777671814,\s,\cp])
+
+        E = encode(["/play2",s,M]),
+        {ok, Socket} = gen_udp:open(0,[binary]),
+        ok = gen_udp:send(Socket, "localhost", 57120, E),
+        gen_udp:close(Socket).
+   
+    
