@@ -1,5 +1,5 @@
 %%%-------------------------------------------------------------------
-%% @doc liveMateria top level supervisor.
+%% @doc livemateriaatom top level supervisor.
 %% @end
 %%%-------------------------------------------------------------------
 
@@ -26,10 +26,38 @@ start_link() ->
 %%                  type => worker(),       % optional
 %%                  modules => modules()}   % optional
 init([]) ->
+    create_ets(),
+    set_cookie(),
     SupFlags = #{strategy => one_for_all,
                  intensity => 0,
                  period => 1},
-    ChildSpecs = [],
+    %ChildSpecs = [
+    %#{
+    %		    id => tdpSocket,
+    %		    start => {tcpSocket, start_link, []}
+    %		    },
+    %		    #{
+    %		    id => synth,
+    %		    start => {synth, start_link, []}
+    %		    },
+    ChildSpecs = [
+		  #{
+		    id => tcpSocket,
+		    start => {tcpSocket, start_link, []}
+		   }
+		 ],
+    %{ok, {SupFlags, []}}.
     {ok, {SupFlags, ChildSpecs}}.
 
+set_cookie() ->
+	erlang:set_cookie( node(), application:get_env(liveMateria,cookie,liveMateria)),
+	io:format("\tnode:~s\n\tCookie:~s~n",[color:yellow(io_lib:format("~w",[node()])), color:yellow( io_lib:format("~w",[erlang:get_cookie()]) )]),
+	{ok, erlang:get_cookie()}.
+
 %% internal functions
+create_ets() ->
+	ets:new(proxies, [set, public, named_table]),
+	ets:new(buses, [set, public, named_table]),
+	ets:new(bounds, [set, public, named_table]).
+
+

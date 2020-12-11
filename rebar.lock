@@ -1,4 +1,4 @@
-[{<<"rebar">>,
-  {git,"https://github.com/soundkitchen/osc-erlang.git",
-       {ref,"fdb210e02d1edeae4d0e328b983c44c1d634cbfe"}},
+[{<<"color">>,
+  {git,"https://github.com/julianduque/erlang-color.git",
+       {ref,"2e538a3360cfdf47906929a04b9471a1f5320afe"}},
   0}].

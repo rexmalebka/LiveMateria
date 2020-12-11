@@ -1,15 +1,16 @@
-{application, liveMateria,
+{application, supercollider,
  [{description, "An OTP application"},
   {vsn, "0.1.0"},
   {registered, []},
-  {mod, {liveMateria_app, []}},
+  {mod, {supercollider_app, []}},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+    color
    ]},
   {env,[]},
   {modules, []},
 
-  {licenses, ["GPL 3.0"]},
+  {licenses, ["Apache 2.0"]},
   {links, []}
  ]}.

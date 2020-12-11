@@ -1,0 +1,1 @@
+-record(proxy, {id, bound, value}).
