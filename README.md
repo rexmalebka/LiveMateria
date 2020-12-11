@@ -1,7 +1,7 @@
 liveMateria
 =====
 
-A Music sequencer inspired in [TidalCycles](https://github.com/tidalcycles/Tidal), the idea came after reading this:[Controling Live Music](https://joearms.github.io/published/2016-01-27-Controlling-Live-Music.html) and this: [Controlling sound with OSC Messages](https://joearms.github.io/published/2016-01-29-Controlling-Sound-with-OSC-Messages.html).
+The idea came after reading this:[Controling Live Music](https://joearms.github.io/published/2016-01-27-Controlling-Live-Music.html) and this: [Controlling sound with OSC Messages](https://joearms.github.io/published/2016-01-29-Controlling-Sound-with-OSC-Messages.html).
 
 the main ideas are:
 
@@ -26,7 +26,7 @@ I propose:
 Proposed Sintax 
 -----
 
-```
+```erl
 % sequence are attached to a main clock
 
 % seq1@ it's a registered atom (the @ it's for avoiding name collision with sample names).
@@ -85,9 +85,32 @@ clockMain ! {
 
 ```
 
+Config
+-----
+config/sys.config
+```erl
+[
+  {liveMateria, [
+	{tcpport, 9999},
+	{cookie, 'liveMateria-cookie'}
+]},
+  {supercollider, [
+	{sclang_path, "/Applications/SuperCollider.app/Contents/MacOS/sclang"},
+	{scsynth_udp_port, 57110}
+]}
+].
+```
 
+config/vm.args
+```erl
+-sname liveMateriamiau
+
+
++K true
++A30
+```
 
 Build
 -----
-
-    $ rebar3 compile
+    $ rebar3 release
+    $ ./_build/default/rel/liveMateria/bin/liveMateria foreground
