@@ -1,0 +1,4 @@
+-record(sinosc, {freq=440, phase=0, mul=1, add=0}).
+-record(pulse, {freq=440, width=0.5, mul=1, add=0}).
+-record(saw, {freq=440, mul=1, add=0}).
+-record(lftri,  {freq=440, iphase=0, mul=1, add=0}).
